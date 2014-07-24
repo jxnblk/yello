@@ -5,10 +5,15 @@ layout: application
 <h1>Home</h1>
 
 <div ng-app="app" ng-controller="HomeCtrl">
-  <pre>test: {{ test }}</pre>
+  {% raw %}
+    <pre>herro: {{ herro }}</pre>
+    <pre>test: {{ test }}</pre>
 
-  <div plangular src="http://soundcloud.com/jxnblk/let-go">
-    <pre>track: {{ track | json }}</pre>
-  </div>
+    <div plangular src="http://soundcloud.com/jxnblk/let-go">
+      <a href ng-click="player.play(track)">Play</a>
+      <a href ng-click="player.pause()">Pause</a>
+      <pre>track: {{ track | json }}</pre>
+    </div>
+  {% endraw %}
 </div>
 
