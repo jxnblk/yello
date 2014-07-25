@@ -1,7 +1,8 @@
 <div class="p2" ng-controller="player">
   {% raw %}
-    <h2>{{ player.tracks[player.i].title }}</h2>
+    <h2 ng-class="{ 'mid-gray regular': player.tracks.length < 1 }">{{ player.tracks[player.i].title || 'No track loaded' }}</h2>
     <a href ng-show="!player.playing" ng-click="player.play()">Play</a>
     <a href ng-show="player.playing" ng-click="player.pause()">Pause</a>
+    <pre> {{ currentTime || app.player.currentTime | playTime }} | {{ duration | playTime }}</pre>
   {% endraw %}
 </div>

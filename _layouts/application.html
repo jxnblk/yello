@@ -20,7 +20,11 @@
   <script src="{{ site.baseurl }}/js/controllers/home.js"></script>
   <script src="{{ site.baseurl }}/js/controllers/page2.js"></script>
 </head>
-<body ng-controller="{{ page.controller }}"> 
+{% if page.controller %}
+  <body ng-controller="{{ page.controller }}"> 
+{% else %}
+  <body>
+{% endif %}
 
   {% include header.html %}
 

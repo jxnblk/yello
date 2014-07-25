@@ -5,10 +5,14 @@ controller: home
 
 {% raw %}
 
-  <div class="p2">
-    <h1>{{ track.title }}</h1>
-    <a href ng-show="!player.playing" ng-click="player.play()">Play</a>
-    <a href ng-show="player.playing" ng-click="player.pause()">Pause</a>
+
+  <div class="p2" soundcloud-player src="http://soundcloud.com/jxnblk/really-wanna">
+    <pre>player directive</pre>
+    <h3 ng-click="play()"><a href>{{ track.title }}</a></h3>
+    <!--
+      <a href ng-show="!player.playing" ng-click="play(0)">Play</a>
+      <a href ng-show="player.playing" ng-click="pause()">Pause</a>
+    -->
   </div>
 
 {% endraw %}
