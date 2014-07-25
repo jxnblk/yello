@@ -1,18 +1,19 @@
 ---
 layout: application
+title: Home
 controller: home
 ---
 
 {% raw %}
 
+  <div class="p2">
+    <div class="mb1" soundcloud-player src="http://soundcloud.com/jxnblk/really-wanna">
+      <h3 ng-click="play()"><a href class="dark-gray">{{ response.user.username }} - {{ response.title }}</a></h3>
+    </div>
 
-  <div class="p2" soundcloud-player src="http://soundcloud.com/jxnblk/really-wanna">
-    <pre>player directive</pre>
-    <h3 ng-click="play()"><a href>{{ track.title }}</a></h3>
-    <!--
-      <a href ng-show="!player.playing" ng-click="play(0)">Play</a>
-      <a href ng-show="player.playing" ng-click="pause()">Pause</a>
-    -->
+    <div class="mb1" soundcloud-player src="http://soundcloud.com/jxnblk/let-go">
+      <h3 ng-click="play()"><a href class="dark-gray">{{ response.user.username }} - {{ response.title }}</a></h3>
+    </div>
   </div>
 
 {% endraw %}

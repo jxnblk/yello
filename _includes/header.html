@@ -1,9 +1,8 @@
 <header class="p2">
   <h1 class="mb0">Jengular</h1>
-  <p>Jekyll, Angular, Turbolinks audio player framework</p>
-  <nav>
-    <a href="{{ site.baseurl }}/">Home</a>
-    <a href="{{ site.baseurl }}/page2">Page 2</a>
-    <a href="{{ site.baseurl }}/page3">Page 3</a>
+  <p>Audio player framework built with Jekyll, Angular, and Turbolinks.</p>
+  <nav class="nav mobile-nav-table nav-small nav-pills">
+    <a href="{{ site.baseurl }}/" class="{% if page.title == 'Home' %}active{% endif %}">Home</a>
+    <a href="{{ site.baseurl }}/nyc-so-far" class="{% if page.title == 'NYC So Far' %}active{% endif %}">NYC So Far</a>
   </nav>
 </header>

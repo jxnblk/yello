@@ -29,7 +29,6 @@ angular.element(document).ready(function() {
 
 // Bootstrap the app when turbolinks page loads
 angular.element(document).on('page:load', function($rootScope) {
-  console.log(app.player);
   angular.bootstrap(document.body, ['app']);
 });
 

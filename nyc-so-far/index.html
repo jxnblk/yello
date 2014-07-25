@@ -1,0 +1,16 @@
+---
+layout: application
+title: NYC So Far
+controller: nyc-so-far
+---
+
+{% raw %}
+  <div soundcloud-player src="https://soundcloud.com/jxnblk/sets/nyc-so-far" class="mb4">
+    <h3 class="px2">{{ response.title }}</h3>
+    <div class="nav nav-light">
+      <a href ng-repeat="track in response.tracks" ng-class="{'active': player.playing == track }" ng-click="play($index)">
+        {{ track.user.username }} - {{ track.title }}
+      </a>
+    </div>
+  </div>
+{% endraw %}
