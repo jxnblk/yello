@@ -1,7 +1,8 @@
 /*
 
         PLANGULAR
-        A Highly Customizable SoundCloud Player
+
+        Partially customized for use with Turbolinks
 
         http://jxnblk.github.io/Plangular
 
@@ -10,13 +11,27 @@
 
 'use strict';
 
-var plangular = angular.module('plangular', []),
-    clientID = '0d33361983f16d2527b01fbf6408b7d7',
-    iconUrl = 'icons/plangular-icons.svg';
+//var plangular = angular.module('plangular', []),
+//    clientID = '0d33361983f16d2527b01fbf6408b7d7',
+//    iconUrl = 'icons/plangular-icons.svg';
+
+var plangular = angular.module('plangular', []);
+
+plangular.clientID = '0d33361983f16d2527b01fbf6408b7d7';
+plangular.iconUrl = 'icons/plangular-icons.svg';
+
+plangular.audio = plangular.audio || document.createElement('audio');
+
+plangular.audio.addEventListener('ended', function($rootScope) {
+  $rootScope.$apply(function(){
+    if (player.tracks.length > 0) player.next();
+    else player.pause();
+  });
+}, false);
+
 
 plangular.directive('plangular', function ($document, $rootScope, $http) {
-    // Define the audio engine
-    var audio = $document[0].createElement('audio');
+    console.log('plangular');
 
     // Define the player object
     var player = {
@@ -33,13 +48,13 @@ plangular.directive('plangular', function ($document, $rootScope, $http) {
         player.tracks = tracks;
         player.track = tracks[i];
         player.i = i;
-        if (player.paused != player.track) audio.src = player.track.stream_url + '?client_id=' + clientID;
-        audio.play();
+        if (player.paused != player.track) plangular.audio.src = player.track.stream_url + '?client_id=' + plangular.clientID;
+        plangular.audio.play();
         player.playing = player.track;
         player.paused = false;
       },
       pause: function() {
-        audio.pause();
+        plangular.audio.pause();
         if (player.playing) {
           player.paused = player.playing;
           player.playing = false;
@@ -75,20 +90,12 @@ plangular.directive('plangular', function ($document, $rootScope, $http) {
       }
     };
 
-    audio.addEventListener('ended', function() {
-      $rootScope.$apply(function(){
-        if (player.tracks.length > 0) player.next();
-        else player.pause();
-      });
-      
-    }, false);
-
     // Returns the player, audio, track, and other objects
     return {
       restrict: 'A',
       scope: true,
       link: function (scope, elem, attrs) {
-        var params = { url: attrs.src, client_id: clientID, callback: 'JSON_CALLBACK' }
+        var params = { url: attrs.src, client_id: plangular.clientID, callback: 'JSON_CALLBACK' }
         $http.jsonp('//api.soundcloud.com/resolve.json', { params: params }).success(function(data){
           // Handle playlists (i.e. sets)
           if (data.tracks) scope.playlist = data;
@@ -98,16 +105,18 @@ plangular.directive('plangular', function ($document, $rootScope, $http) {
           else scope.data = data;
         });
         scope.player = player;
-        scope.audio = audio;
-        scope.currentTime = 0;
-        scope.duration = 0;
+        scope.audio = plangular.audio;
+        //scope.currentTime = 0;
+        //scope.duration = 0;
+        scope.currentTime = (plangular.audio.currentTime * 1000).toFixed() || 0;
+        scope.duration = (plangular.audio.duration * 1000).toFixed() || 0;
 
         // Updates the currentTime and duration for the audio
-        audio.addEventListener('timeupdate', function() {
+        plangular.audio.addEventListener('timeupdate', function() {
           if (scope.track == player.track || (scope.playlist && scope.playlist.tracks == player.tracks)){
             scope.$apply(function() {
-              scope.currentTime = (audio.currentTime * 1000).toFixed();
-              scope.duration = (audio.duration * 1000).toFixed();
+              scope.currentTime = (plangular.audio.currentTime * 1000).toFixed();
+              scope.duration = (plangular.audio.duration * 1000).toFixed();
             });  
           };
         }, false);
@@ -115,7 +124,7 @@ plangular.directive('plangular', function ($document, $rootScope, $http) {
         // Handle click events for seeking
         scope.seekTo = function($event){
           var xpos = $event.offsetX / $event.target.offsetWidth;
-          audio.currentTime = (xpos * audio.duration);
+          plangular.audio.currentTime = (xpos * plangular.audio.duration);
         };
       }
     }

@@ -1,25 +1,35 @@
-console.log('app');
+/*
+ * Jengular
+ *
+ * Customized AngularJS implementation for use with Turbolinks and Jekyll
+ *
+ */
 
-var app = angular.module('app', ['plangular']);
+'use strict';
 
-app.controller('ApplicationCtrl', ['$scope', function($scope) {
-  console.log('ApplicationCtrl');
-  $scope.herro = 'application';
-}]);
+//var app = angular.module('app', ['plangular']);
+var app = angular.module('app', []);
 
-app.controller('HomeCtrl', ['$scope', function($scope) {
-  console.log('HomeCtrl');
-  $scope.test = 'herro';
-}]);
- 
-angular.element(document).on('ready', function() {
-  console.log('ready');
-  angular.bootstrap(document, ['app']);
-  //angular.bootstrap(document.body, ['app']);
-});
+// Store global properties in app
+app.state = 'initialized';
 
-angular.element(document).on('page:load', function(){
-  console.log('page load');
+// See player.js
+//app.player = {};
+// app.player.tracks = []; // Use this to prevent multiple api calls to SoundCloud
+
+// This runs everytime a page is loaded
+//app.run(function() {
+//  //console.log('app run');
+//});
+
+// Bootstrap the app when document is ready
+angular.element(document).ready(function() {
   angular.bootstrap(document.body, ['app']);
 });
+
+// Bootstrap the app when turbolinks page loads
+angular.element(document).on('page:load', function($rootScope) {
+  angular.bootstrap(document.body, ['app']);
+});
+
 

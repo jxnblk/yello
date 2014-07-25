@@ -1,15 +1,7 @@
----
-layout: application
-controller: home
----
-
-{% raw %}
-
-  <div class="p2">
-    <h1>{{ track.title }}</h1>
+<div class="p2" ng-controller="player">
+  {% raw %}
+    <h2>{{ player.tracks[player.i].title }}</h2>
     <a href ng-show="!player.playing" ng-click="player.play()">Play</a>
     <a href ng-show="player.playing" ng-click="player.pause()">Pause</a>
-  </div>
-
-{% endraw %}
-
+  {% endraw %}
+</div>
