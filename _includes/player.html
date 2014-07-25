@@ -2,7 +2,7 @@
   {% raw %}
     <div class="table border rounded">
       <div class="table-cell p2 nowrap">
-        <div class="mobile-table">
+        <div class="mobile-table center">
           <div class="mobile-table-cell">
             <a href ng-click="player.previous()">
               <div icon="previous"></div>
@@ -23,7 +23,7 @@
           </div>
         </div>
       </div>
-      <div class="table-cell full-width">
+      <div class="table-cell full-width mobile-center">
         <div class="p2">
           <h2 class="h4 mb0">{{ player.tracks[player.i].user.username }}</h2>
           <h2 ng-class="{ 'mid-gray regular': player.tracks.length < 1 }">{{ player.tracks[player.i].title || 'No track loaded' }}</h2>

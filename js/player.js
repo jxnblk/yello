@@ -64,6 +64,10 @@ app.service('player', function($rootScope, $http) {
     $rootScope.$broadcast('timeUpdate', currentTime);
   });
 
+  app.audio.addEventListener('ended', function() {
+    player.next();
+  });
+
   return player;
 
 });
