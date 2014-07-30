@@ -7,7 +7,6 @@ app.player = {};
 app.player.tracks = [];
 app.player.i = 0;
 app.player.playing = false;
-app.player.paused = false;
 app.player.currentTime = 0;
 
 app.soundcloudData = {};

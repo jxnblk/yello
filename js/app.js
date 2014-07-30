@@ -1,35 +1,62 @@
 /*
- * Jengular
- *
- * Customized AngularJS implementation for use with Turbolinks and Jekyll
+ * Jekyll Vue
  *
  */
 
-'use strict';
 
-//var app = angular.module('app', ['plangular']);
-var app = angular.module('app', []);
+// Init global variables
+var app = {};
+var view;
+app.audio = app.audio || document.createElement('audio');
+app.player = {};
+app.player.tracks = [];
+app.player.i = 0;
+app.player.playing = false;
+app.player.currentTime = 0;
 
-// Store global properties in app
-app.state = 'initialized';
+app.api = 'http://api.soundcloud.com/resolve.json';
+app.clientID = '0d33361983f16d2527b01fbf6408b7d7';
+app.soundcloudData = {};
 
-// See player.js
-//app.player = {};
-// app.player.tracks = []; // Use this to prevent multiple api calls to SoundCloud
+app.get = function(url, callback) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', url, true);
+  xhr.send();
+  xhr.onload = function () {
+    if (!xhr.response) console.error('Could not load');
+    callback(xhr.response);
+  };
+};
 
-// This runs everytime a page is loaded
-//app.run(function() {
-//  //console.log('app run');
-//});
 
-// Bootstrap the app when document is ready
-angular.element(document).ready(function() {
-  angular.bootstrap(document.body, ['app']);
+Vue.directive('soundcloud', {
+  bind: function(value) {
+    console.log('soundcloud directive');
+    var url = app.api + '?url=' + value + '&client_id=' + app.clientID;
+    if (!app.soundcloudData[value]) {
+      app.get(url, function(data) {
+        app.soundcloudData[value] = JSON.parse(data);
+        console.log(app.soundcloudData);
+        view.$data = { soundcloud: app.soundcloudData };
+      });
+    };
+  }
 });
 
-// Bootstrap the app when turbolinks page loads
-angular.element(document).on('page:load', function($rootScope) {
-  angular.bootstrap(document.body, ['app']);
+Vue.component('test-comp', {
+  template: '{{ soundcloud }}'
 });
 
+
+app.bootstrap = function() {
+  view = new Vue({ el: '#view', data: { soundcloud: app.soundcloudData } });
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+  app.bootstrap();
+});
+
+document.addEventListener('page:load', function () {
+  app.bootstrap();
+});
 

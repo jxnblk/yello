@@ -1,19 +1,23 @@
 ---
 layout: application
 title: Home
-controller: home
 ---
 
 {% raw %}
 
   <div class="p2">
-    <div class="mb1" soundcloud-player src="http://soundcloud.com/jxnblk/really-wanna">
-      <h3 ng-click="play()"><a href class="dark-gray">{{ response.user.username }} - {{ response.title }}</a></h3>
+    <pre>Home</pre>
+    <div v-soundcloud="'http://soundcloud.com/jxnblk/let-go'">
+
+      <pre>
+      {{ soundcloud }}
+      </pre>
+
+      <div v-view="'test-comp'" class="bg-light-gray">
+        test v view
+      </div>
     </div>
 
-    <div class="mb1" soundcloud-player src="http://soundcloud.com/jxnblk/let-go">
-      <h3 ng-click="play()"><a href class="dark-gray">{{ response.user.username }} - {{ response.title }}</a></h3>
-    </div>
   </div>
 
 {% endraw %}

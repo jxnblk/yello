@@ -1,35 +1,3 @@
-<div class="p2" ng-controller="player">
-  {% raw %}
-    <div class="table border rounded">
-      <div class="table-cell p2 nowrap">
-        <div class="mobile-table center">
-          <div class="mobile-table-cell">
-            <a href ng-click="player.previous()">
-              <div icon="previous"></div>
-            </a>
-          </div>
-          <div class="h2 mobile-table-cell px2">
-            <a href ng-show="!player.playing" ng-click="player.play()">
-              <div icon="play"></div>
-            </a>
-            <a href ng-show="player.playing" ng-click="player.pause()">
-              <div icon="pause"></div>
-            </a>
-          </div>
-          <div class="mobile-table-cell">
-            <a href ng-click="player.next()">
-              <div icon="next"></div>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="table-cell full-width mobile-center">
-        <div class="p2">
-          <h2 class="h4 mb0">{{ player.tracks[player.i].user.username }}</h2>
-          <h2 ng-class="{ 'mid-gray regular': player.tracks.length < 1 }">{{ player.tracks[player.i].title || 'No track loaded' }}</h2>
-          <pre>{{ currentTime || app.player.currentTime | playTime }} | {{ duration | playTime }}</pre>
-        </div>
-      </div>
-    </div>
-  {% endraw %}
-</div>
+{% raw %}
+<pre>player</pre>
+{% endraw %}
