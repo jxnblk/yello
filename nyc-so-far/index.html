@@ -4,5 +4,8 @@ title: NYC So Far
 ---
 
 {% raw %}
-NYC So Far
+  <h4>NYC So Far</h4>
+  <div v-component="soundcloud" v-src="'http://soundcloud.com/jxnblk/sets/nyc-so-far'"">
+    <pre>{{ sc.user.username }} - {{ sc.title }}</pre>
+  </div>
 {% endraw %}

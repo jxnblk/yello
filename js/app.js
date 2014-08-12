@@ -1,55 +1,65 @@
-/*
- * Jekyll Vue
- *
- */
+// Jekyll Vue
 
 
 // Init global variables
 var app = {};
 var view;
-app.audio = app.audio || document.createElement('audio');
-app.player = {};
-app.player.tracks = [];
-app.player.i = 0;
-app.player.playing = false;
-app.player.currentTime = 0;
 
-app.api = 'http://api.soundcloud.com/resolve.json';
-app.clientID = '0d33361983f16d2527b01fbf6408b7d7';
-app.soundcloudData = {};
+var Player = function() {
 
-app.get = function(url, callback) {
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', url, true);
-  xhr.send();
-  xhr.onload = function () {
-    if (!xhr.response) console.error('Could not load');
-    callback(xhr.response);
+  var audio = document.createElement('audio');
+  var api = 'http://api.soundcloud.com/resolve.json';
+  var clientID = '0d33361983f16d2527b01fbf6408b7d7';
+
+  player = {};
+  player.tracks = [];
+  player.i = 0;
+  player.playing = false;
+  player.currentTime = 0;
+  player.data = {};
+
+  player.get = function(url, callback) {
+    var self = this;
+    if (self.data[url] && callback) callback(self.data[url]);
+    var apiUrl = api + '?client_id=' + clientID + '&url=' + url;
+    var xhr = new XMLHttpRequest();
+    xhr.responseType = 'json';
+    xhr.open('GET', apiUrl, true);
+    xhr.send();
+    xhr.onload = function () {
+      if (!xhr.response) console.error('Could not load');
+      self.data[url] = xhr.response;
+      if(callback) callback(xhr.response);
+    };
   };
+
+  return player;
+
 };
 
+app.player = new Player();
 
-Vue.directive('soundcloud', {
-  bind: function(value) {
-    console.log('soundcloud directive');
-    var url = app.api + '?url=' + value + '&client_id=' + app.clientID;
-    if (!app.soundcloudData[value]) {
-      app.get(url, function(data) {
-        app.soundcloudData[value] = JSON.parse(data);
-        console.log(app.soundcloudData);
-        view.$data = { soundcloud: app.soundcloudData };
+var Soundcloud = Vue.extend({
+  template: '#sc-temp',
+  directives: {
+    'src': function(value) {
+      var self = this;
+      player.get(value, function(response) {
+        self.vm.$data = { sc: response };
       });
-    };
+    }
   }
 });
+Vue.component('soundcloud', Soundcloud);
 
-Vue.component('test-comp', {
-  template: '{{ soundcloud }}'
-});
 
 
 app.bootstrap = function() {
-  view = new Vue({ el: '#view', data: { soundcloud: app.soundcloudData } });
+  console.log('bootstrap');
+  view = new Vue({
+    el: '#view',
+    data: { }
+  });
 };
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -59,4 +69,5 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('page:load', function () {
   app.bootstrap();
 });
+
 

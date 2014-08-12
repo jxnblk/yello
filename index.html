@@ -7,15 +7,13 @@ title: Home
 
   <div class="p2">
     <pre>Home</pre>
-    <div v-soundcloud="'http://soundcloud.com/jxnblk/let-go'">
 
-      <pre>
-      {{ soundcloud }}
-      </pre>
+    <div v-component="soundcloud" v-src="'http://soundcloud.com/jxnblk/let-go'"">
+      <pre>{{ sc.user.username }} - {{ sc.title }}</pre>
+    </div>
 
-      <div v-view="'test-comp'" class="bg-light-gray">
-        test v view
-      </div>
+    <div v-component="soundcloud" v-src="'http://soundcloud.com/jxnblk/really-wanna'"">
+      <pre>{{ sc.user.username }} - {{ sc.title }}</pre>
     </div>
 
   </div>
