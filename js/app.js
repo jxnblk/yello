@@ -20,7 +20,10 @@ var Player = function() {
 
   player.get = function(url, callback) {
     var self = this;
-    if (self.data[url] && callback) callback(self.data[url]);
+    if (self.data[url]) {
+      if (callback) callback(self.data[url]);
+      return self.data[url];
+    }
     var apiUrl = api + '?client_id=' + clientID + '&url=' + url;
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
