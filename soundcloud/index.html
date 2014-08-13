@@ -1,0 +1,46 @@
+---
+layout: soundcloud
+title: Soundcloud
+---
+
+{% raw %}
+
+  <div class="p2">
+    <pre>Soundcloud</pre>
+
+    <div v-component="soundcloud" v-src="'http://soundcloud.com/jxnblk/let-go'">
+      <h1>
+        <a href="#!" v-on="click: playPause()">
+          {{ index }} {{ user.username }} - {{ title }}
+        </a>
+      </h1>
+    </div>
+
+    <div v-component="soundcloud" v-src="'http://soundcloud.com/jxnblk/really-wanna'">
+      <h1>
+        <a href="#!" v-on="click: playPause()">
+          {{ index }} {{ user.username }} - {{ title }}
+        </a>
+      </h1>
+    </div>
+
+    <div v-component="soundcloud" v-src="'http://soundcloud.com/mrsjxn/no-love'">
+      <h1>
+        <a href="#!" v-on="click: playPause()">
+          {{ index }} {{ user.username }} - {{ title }}
+        </a>
+      </h1>
+    </div>
+
+    <div v-component="soundcloud" v-src="'http://soundcloud.com/mrsjxn/bbb'">
+      <h1>
+        <a href="#!" v-on="click: playPause()">
+          {{ index }} {{ user.username }} - {{ title }}
+        </a>
+      </h1>
+    </div>
+
+  </div>
+
+{% endraw %}
+
