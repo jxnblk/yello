@@ -8,12 +8,13 @@ var view;
 require('./turbolinks');
 global.player = require('./player');
 require('./soundcloud');
+//require('./views/player');
 
 app.bootstrap = function() {
   console.log('bootstrap');
   view = new Vue({
     el: '#view',
-    data: { }
+    data: global.player
   });
 };
 

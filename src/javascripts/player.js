@@ -2,14 +2,6 @@
 
 'use strict';
 
-/*
-Array.prototype.contains = function(key) {
-  for (var i in this) {
-    if (this[i] == key) return true;
-  }
-  return false;
-}
-*/
 
 var audio = require('./audio');
 
@@ -19,11 +11,12 @@ var Player = function() {
   var clientID = '0d33361983f16d2527b01fbf6408b7d7';
 
   var player = {};
-  player.tracks = [];
+  //player.data = {};
+  player.data = {};
   player.i = 0;
   player.playing = false;
+  player.playingUrl;
   player.currentTime = 0;
-  player.data = [];
 
   player.get = function(url, callback) {
     var self = this;
@@ -39,36 +32,40 @@ var Player = function() {
     xhr.onload = function () {
       if (!xhr.response) console.error('Could not load');
       self.data[url] = xhr.response;
-        //var track = {};
-        //track[url] = xhr.response;
-        //self.data.push(track);
       if(callback) callback(xhr.response);
     };
   };
 
-  player.play = function(src) {
-    this.isPlaying = src;
-    var src = src + '?client_id=' + clientID;
+  player.play = function(url, i) {
+    if (this.data[url].tracks && i) {
+      var src = this.data[url].tracks[i].stream_url + '?client_id=' + clientID;
+    } else {
+      var src = this.data[url].stream_url + '?client_id=' + clientID;
+    }
     if (src != audio.src) audio.src = src;
     audio.play();
+    this.playing = this.data[url];
+    this.playingUrl = url;
   };
 
   player.pause = function() {
     audio.pause();
-    this.isPlaying = false;
+    this.playing = false;
   };
 
-  player.playPause = function(src) {
-    if (this.isPlaying != src) {
-      this.play(src);
+  player.playPause = function(url, i) {
+    console.log(url, i);
+    if (!url) return false;
+    if (this.playing != this.data[url] || this.playing != this.data[url].tracks[i]) {
+      this.play(url, i);
     } else {
       this.pause();
     }
   };
 
-  //audio.addEventListener('timeupdate', function() {
-  //  console.log(audio.currentTime);
-  //});
+  audio.addEventListener('timeupdate', function() {
+    player.currentTime = audio.currentTime;
+  });
 
   return player;
 

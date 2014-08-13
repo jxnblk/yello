@@ -4,8 +4,22 @@ title: NYC So Far
 ---
 
 {% raw %}
-  <h4>NYC So Far</h4>
-  <div v-component="soundcloud" v-src="'http://soundcloud.com/jxnblk/sets/nyc-so-far'"">
-    <pre>{{ sc.user.username }} - {{ sc.title }}</pre>
+  <div class="p2">
+    <h4>NYC So Far</h4>
+    <div v-component="soundcloud" v-src="'http://soundcloud.com/jxnblk/sets/nyc-so-far'">
+      {{ user.username }} - {{ title }}
+      <div v-repeat="tracks">
+        <h3>
+          <a href="#!" v-on="click: playPause($index)">
+            {{ user.username }} - {{ title }} ({{ $index }})
+          </a>
+        </h3>
+      </div>
+      <hr>
+      <pre> {{ tracks }}</pre>
+      <hr>
+      <pre> {{ $data }}</pre>
+    </div>
   </div>
 {% endraw %}
+

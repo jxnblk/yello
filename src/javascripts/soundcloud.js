@@ -3,26 +3,29 @@
 
 
 var Soundcloud = Vue.extend({
-  template: '#sc-temp',
   data: {
-    play: function() {
-      console.log('soundcloud.play');
-      var url = this.$data.sc.stream_url;
-      if (url) global.player.play(url);
+    play: function(i) {
+      console.log('index', i);
+      var url = this.$data.value;
+      global.player.play(url, i);
     },
     pause: function() {
       global.player.pause();
     },
-    playPause: function() {
-      var url = this.$data.sc.stream_url;
-      global.player.playPause(url);
+    playPause: function(i) {
+      console.log(i);
+      var url = this.$data.value;
+      global.player.playPause(url, i);
     }
   },
   directives: {
     'src': function(value) {
       var self = this;
+      self.vm.$data.value = value;
       global.player.get(value, function(response) {
-        self.vm.$data.sc = response;
+        for (var key in response) {
+          self.vm.$data[key] = response[key];
+        }
       });
     }
   }
