@@ -9,11 +9,21 @@ title: Home
     <pre>Home</pre>
 
     <div v-component="soundcloud" v-src="'http://soundcloud.com/jxnblk/let-go'"">
-      <pre>{{ sc.user.username }} - {{ sc.title }}</pre>
+      <h1>
+        <a href v-on="click: playPause()">
+          {{ sc.user.username }} - {{ sc.title }}
+        </a>
+      </h1>
+      <button v-on="click: pause()">Pause</button>
     </div>
 
     <div v-component="soundcloud" v-src="'http://soundcloud.com/jxnblk/really-wanna'"">
-      <pre>{{ sc.user.username }} - {{ sc.title }}</pre>
+      <h1>
+        <a href v-on="click: playPause()">
+          {{ sc.user.username }} - {{ sc.title }}
+        </a>
+      </h1>
+      <button v-on="click: pause()">Pause</button>
     </div>
 
   </div>

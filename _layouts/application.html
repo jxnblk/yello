@@ -5,11 +5,11 @@
   <meta charset="utf-8">
   <title>Jekyll Vuejs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="{{ site.baseurl }}/css/basscss.min.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/stylesheets/basscss.min.css">
+  <!--
   <script src="{{ site.baseurl }}/js/turbolinks.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/0.10.5/vue.min.js"></script>
-  <script src="{{ site.baseurl }}/js/app.js"></script>
   <style> .icon{width:1em;height:1em;position:relative;top:.1875em}.nowrap{white-space:nowrap} </style>
+  -->
 </head>
 <body id="view">
 
@@ -18,6 +18,8 @@
   {% include player.html %}
 
   {{ content }}
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/0.10.5/vue.min.js"></script>
+  <script src="{{ site.baseurl }}/assets/javascripts/app.min.js"></script>
 
 </body>
 </html>
