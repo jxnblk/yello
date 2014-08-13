@@ -11,11 +11,9 @@ var Player = function() {
   var clientID = '0d33361983f16d2527b01fbf6408b7d7';
 
   var player = {};
-  //player.data = {};
   player.data = {};
   player.i = 0;
   player.playing = false;
-  player.playingUrl;
   player.currentTime = 0;
 
   player.get = function(url, callback) {
@@ -36,8 +34,9 @@ var Player = function() {
     };
   };
 
+
   player.play = function(url, i) {
-    if (this.data[url].tracks && i) {
+    if (this.data[url] && this.data[url].tracks && i) {
       var src = this.data[url].tracks[i].stream_url + '?client_id=' + clientID;
     } else {
       var src = this.data[url].stream_url + '?client_id=' + clientID;
@@ -45,7 +44,6 @@ var Player = function() {
     if (src != audio.src) audio.src = src;
     audio.play();
     this.playing = this.data[url];
-    this.playingUrl = url;
   };
 
   player.pause = function() {
@@ -54,9 +52,8 @@ var Player = function() {
   };
 
   player.playPause = function(url, i) {
-    console.log(url, i);
     if (!url) return false;
-    if (this.playing != this.data[url] || this.playing != this.data[url].tracks[i]) {
+    if (this.playing != this.data[url]) {
       this.play(url, i);
     } else {
       this.pause();

@@ -1,4 +1,4 @@
 # baseurl for gh-pages
-baseurl: '/jekyllvue'
+# baseurl: '/jekyllvue'
 exclude: ['node_modules', 'package.json', 'gulpfile.js', 'src']
 
