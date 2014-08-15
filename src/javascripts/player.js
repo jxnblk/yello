@@ -4,46 +4,28 @@
 
 
 var audio = require('./audio');
+var xhr = require('./xhr');
+
 
 var Player = function() {
 
-  var api = 'http://api.soundcloud.com/resolve.json';
-  var clientID = '0d33361983f16d2527b01fbf6408b7d7';
-
   var player = {};
-  player.data = {};
   player.i = 0;
   player.playing = false;
   player.currentTime = 0;
 
-  player.get = function(url, callback) {
-    var self = this;
-    if (self.data[url]) {
-      if (callback) callback(self.data[url]);
-      return self.data[url];
-    }
-    var apiUrl = api + '?client_id=' + clientID + '&url=' + url;
-    var xhr = new XMLHttpRequest();
-    xhr.responseType = 'json';
-    xhr.open('GET', apiUrl, true);
-    xhr.send();
-    xhr.onload = function () {
-      if (!xhr.response) console.error('Could not load');
-      self.data[url] = xhr.response;
-      if(callback) callback(xhr.response);
-    };
-  };
-
-
-  player.play = function(url, i) {
-    if (this.data[url] && this.data[url].tracks && i) {
-      var src = this.data[url].tracks[i].stream_url + '?client_id=' + clientID;
+  player.play = function(track, i) {
+    if (track.tracks) {
+      var track = track.tracks[i];
+      //var src = track.tracks[i].stream_url + '?client_id=' + app.clientID;
+      this.i = i;
     } else {
-      var src = this.data[url].stream_url + '?client_id=' + clientID;
+      var track = track;
     }
+    var src = track.stream_url + '?client_id=' + app.clientID;
     if (src != audio.src) audio.src = src;
     audio.play();
-    this.playing = this.data[url];
+    this.playing = track;
   };
 
   player.pause = function() {
@@ -51,13 +33,24 @@ var Player = function() {
     this.playing = false;
   };
 
-  player.playPause = function(url, i) {
-    if (!url) return false;
-    if (this.playing != this.data[url]) {
-      this.play(url, i);
+  player.playPause = function(track, i) {
+    if (!track) return false;
+    if (track.tracks && this.playing != track.tracks[i]) {
+      this.play(track, i);
+    } else if (!track.tracks && this.playing != track) {
+      this.play(track, i);
     } else {
       this.pause();
     }
+  };
+
+  player.next = function() {
+  };
+
+  player.previous = function() {
+  };
+
+  player.seek = function(time) {
   };
 
   audio.addEventListener('timeupdate', function() {
@@ -68,7 +61,8 @@ var Player = function() {
 
 };
 
-var player = global.player || new Player();
+//var player = global.player || new Player();
+var player = player || new Player();
 
 module.exports = player;
 

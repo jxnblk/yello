@@ -1,7 +1,7 @@
 {% raw %}
 <div id="global-player" class="p2">
-  <pre>{{ playing.user.username }} - {{ playing.title }}</pre>
-  <pre>{{ currentTime }}</pre>
-  <button v-on="click: playPause(playingUrl)">Play/Pause</button>
+  <pre>{{ player.playing.user.username }} - {{ player.playing.title }}</pre>
+  <pre>{{ player.currentTime }}</pre>
+  <button v-on="click: player.playPause(player.playing)">Play/Pause</button>
 </div>
 {% endraw %}

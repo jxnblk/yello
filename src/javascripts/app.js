@@ -2,16 +2,22 @@
 
 'use strict';
 
-var app = {};
+global.app = {};
+app.api = 'http://api.soundcloud.com/resolve.json';
+app.clientID = '0d33361983f16d2527b01fbf6408b7d7';
+app.data = {};
+
 require('./turbolinks');
-global.player = require('./player');
 require('./soundcloud');
+//global.player = require('./player');
+
+app.data.player = require('./player');
 
 app.bootstrap = function() {
-  global.player.playlist = [];
+  console.log('bootstrap');
   app.view = new Vue({
     el: '#view',
-    data: global.player
+    data: app.data
   });
 };
 

@@ -1,23 +1,29 @@
 {
-  "name": "baldervue",
+  "name": "jekyllvue",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
-  "dependencies": {
-    "browserify": "^5.9.3",
-    "gulp": "^3.8.7",
-    "gulp-rename": "^1.2.0",
-    "gulp-uglify": "^0.3.1",
-    "gulp-watch": "^0.6.9"
-  },
+  "main": "gulpfile.js",
+  "dependencies": {},
   "devDependencies": {
+    "gulp": "^3.8.7",
     "gulp-browserify": "^0.5.0",
-    "gulp-connect": "^2.0.6",
-    "gulp-uglifyjs": "^0.4.2"
+    "gulp-connect": "~2.0.6",
+    "gulp-rename": "^1.2.0",
+    "gulp-uglifyjs": "~0.4.2",
+    "gulp-watch": "~0.6.9",
+    "connect": "^2.25.5"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jxnblk/jekyllvue.git"
+  },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jxnblk/jekyllvue/issues"
+  },
+  "homepage": "https://github.com/jxnblk/jekyllvue"
 }

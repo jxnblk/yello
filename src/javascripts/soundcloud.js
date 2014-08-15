@@ -1,19 +1,23 @@
 
 'use strict';
 
+var player = require('./player');
+var xhr = require('./xhr');
 
 var Soundcloud = Vue.extend({
   data: {
     play: function(i) {
       var url = this.$data.value;
-      global.player.play(url, i);
+      var track = app.data[url]; // Also sends full playlist for player to handle
+      player.play(track, i);
     },
     pause: function() {
-      global.player.pause();
+      player.pause();
     },
     playPause: function(i) {
       var url = this.$data.value;
-      global.player.playPause(url, i);
+      var track = app.data[url];
+      player.playPause(track, i);
     }
   },
   directives: {
@@ -26,7 +30,9 @@ var Soundcloud = Vue.extend({
           self.vm.$data.index = i;
         }
       }
-      global.player.get(value, function(response) {
+      var apiUrl = app.api + '?url=' + value + '&client_id=' + app.clientID;
+      xhr.get(apiUrl, function(response) {
+        app.data[value] = response;
         for (var key in response) {
           self.vm.$data[key] = response[key];
         }

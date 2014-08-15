@@ -1,13 +1,34 @@
 ---
 layout: application
-title: Home
+title: Soundcloud
 ---
 
 {% raw %}
 
   <div class="p2">
-    <pre>Home</pre>
 
+    <div v-component="soundcloud" v-src="'http://soundcloud.com/jxnblk/sets/nyc-so-far'">
+      <h1>
+        <a href="#!" v-on="click: playPause()">
+          {{ index }} {{ user.username }} - {{ title }}
+        </a>
+      </h1>
+      <ol>
+        <li v-repeat="tracks">
+          <a href="#!" v-on="click: playPause($index)">
+            {{ user.username }} - {{ title }}
+          </a>
+        </li>
+      </ol>
+    </div>
+
+    <div v-component="soundcloud" v-src="'http://soundcloud.com/mrsjxn/no-love'">
+      <h1>
+        <a href="#!" v-on="click: playPause()">
+          {{ index }} {{ user.username }} - {{ title }}
+        </a>
+      </h1>
+    </div>
 
   </div>
 

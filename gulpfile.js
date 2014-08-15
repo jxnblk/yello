@@ -10,7 +10,7 @@ gulp.task('compile', function() {
   gulp.src('./src/javascripts/app.js')
     .pipe(browserify())
     //.pipe(uglify('app.min.js', { outSourceMap: true }))
-    .pipe(uglify())
+    //.pipe(uglify())
     .pipe(rename('app.min.js'))
     .pipe(gulp.dest('./assets/javascripts'));
 });
