@@ -9,7 +9,10 @@ var Soundcloud = Vue.extend({
     play: function(i) {
       var url = this.$data.value;
       var track = app.data[url]; // Also sends full playlist for player to handle
-      player.play(track, i);
+      var tracks;
+      if (track.tracks) tracks = track.tracks;
+      else tracks = track;
+      player.play(tracks, i);
     },
     pause: function() {
       player.pause();
@@ -17,13 +20,21 @@ var Soundcloud = Vue.extend({
     playPause: function(i) {
       var url = this.$data.value;
       var track = app.data[url];
-      player.playPause(track, i);
+      var tracks;
+      if (track.tracks) tracks = track.tracks;
+      else tracks = track;
+      player.playPause(tracks, i);
     }
   },
   directives: {
     'src': function(value) {
       var self = this;
       self.vm.$data.value = value;
+      var preloadPlayer = function(track) {
+        if (player.tracks.length > 0) return false;
+        player.tracks = track.tracks || new Array(track);
+        player.i = 0;
+      };
       var elements = document.querySelectorAll('[v-src]');
       for (var i = 0; i < elements.length; i++) {
         if (this.el == elements[i]) {
@@ -35,12 +46,14 @@ var Soundcloud = Vue.extend({
         for (var key in app.data[value]) {
           self.vm.$data[key] = app.data[value][key];
         }
+        preloadPlayer(app.data[value]);
       } else {
         xhr.get(apiUrl, function(response) {
           app.data[value] = response;
           for (var key in response) {
             self.vm.$data[key] = response[key];
           }
+          preloadPlayer(app.data[value]);
         });
       }
     }

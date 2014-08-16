@@ -2,6 +2,8 @@
 <div id="global-player" class="p2">
   <pre>{{ player.playing.user.username }} - {{ player.playing.title }}</pre>
   <pre>{{ player.currentTime }}</pre>
-  <button v-on="click: player.playPause(player.playing)">Play/Pause</button>
+  <button v-on="click: player.playPause(player.tracks, player.i)">Play/Pause</button>
+  <button v-on="click: player.previous()">Previous</button>
+  <button v-on="click: player.next()">Next</button>
 </div>
 {% endraw %}
