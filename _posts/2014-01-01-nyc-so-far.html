@@ -15,22 +15,24 @@ published: false
 
   {% raw %}
 
-    <div v-component="soundcloud" v-src="'http://soundcloud.com/jxnblk/sets/nyc-so-far'">
-      <h2>{{ user.username }} - {{ title }}</h2>
-      <ol>
-        <li v-repeat="tracks">
-          <a href="#!" v-on="click: playPause($index)">
-            {{ user.username }} - {{ title }}
-          </a>
-        </li>
-      </ol>
+    <div class="container-col-8 center p2">
+      <div v-component="soundcloud" v-src="'http://soundcloud.com/jxnblk/sets/nyc-so-far'">
+        <h2>{{ user.username }} - {{ title }}</h2>
+        <ol>
+          <li v-repeat="tracks">
+            <a href="#!" v-on="click: playPause($index)">
+              {{ user.username }} - {{ title }}
+            </a>
+          </li>
+        </ol>
+      </div>
     </div>
 
 
   {% endraw %}
 
   <script>
-    document.body.bodyBg = 'bg-mid-gray';
+    document.body.bodyBg = 'bg-red';
   </script>
 
 </div>
