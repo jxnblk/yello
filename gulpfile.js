@@ -3,16 +3,23 @@ var gulp = require('gulp');
 var browserify = require('gulp-browserify');
 var connect = require('gulp-connect');
 var rename = require('gulp-rename');
+var sass = require('gulp-sass');
 var uglify = require('gulp-uglifyjs');
 var watch = require('gulp-watch');
 
-gulp.task('compile', function() {
+gulp.task('compilejs', function() {
   gulp.src('./src/javascripts/app.js')
     .pipe(browserify())
-    //.pipe(uglify('app.min.js', { outSourceMap: true }))
-    //.pipe(uglify())
+    .pipe(uglify())
     .pipe(rename('app.min.js'))
     .pipe(gulp.dest('./assets/javascripts'));
+});
+
+gulp.task('sass', function() {
+  gulp.src('./src/stylesheets/app.scss')
+    .pipe(sass({ options: { outputStyle: 'compressed' } }))
+    .pipe(rename('app.min.css'))
+    .pipe(gulp.dest('./assets/stylesheets'));
 });
 
 gulp.task('jekyll', function() {
@@ -21,10 +28,9 @@ gulp.task('jekyll', function() {
 
 gulp.task('server', function() {
   connect.server({ root: '_site' });
-  //require('child_process').spawn('jekyll', ['serve']);
 });
 
-gulp.task('dev', ['compile', 'jekyll', 'server'], function() {
-  gulp.watch(['./**/*.html', '!./_site/**/*', './src/**/*'], ['compile', 'jekyll']);
+gulp.task('dev', ['compilejs', 'sass', 'jekyll', 'server'], function() {
+  gulp.watch(['./**/*.html', '!./_site/**/*', './src/**/*'], ['compilejs', 'sass', 'jekyll']);
 });
 

@@ -11,7 +11,8 @@
     "gulp-rename": "^1.2.0",
     "gulp-uglifyjs": "~0.4.2",
     "gulp-watch": "~0.6.9",
-    "connect": "^2.25.5"
+    "connect": "^2.25.5",
+    "gulp-sass": "^0.7.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

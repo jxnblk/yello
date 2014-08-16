@@ -31,12 +31,18 @@ var Soundcloud = Vue.extend({
         }
       }
       var apiUrl = app.api + '?url=' + value + '&client_id=' + app.clientID;
-      xhr.get(apiUrl, function(response) {
-        app.data[value] = response;
-        for (var key in response) {
-          self.vm.$data[key] = response[key];
+      if (app.data[value]) {
+        for (var key in app.data[value]) {
+          self.vm.$data[key] = app.data[value][key];
         }
-      });
+      } else {
+        xhr.get(apiUrl, function(response) {
+          app.data[value] = response;
+          for (var key in response) {
+            self.vm.$data[key] = response[key];
+          }
+        });
+      }
     }
   }
 });
