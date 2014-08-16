@@ -1,28 +1,10 @@
 ---
-layout: application
-title: Soundcloud
+title: Home
 ---
 
-{% raw %}
+{% for post in paginator.posts limit: 1 %}
+  {{ post.content }}
+  {% include post-pagination.html %}
+{% endfor %}
 
-  <div class="p2">
-
-    <div v-component="soundcloud" v-src="'http://soundcloud.com/jxnblk/sets/nyc-so-far'">
-      <h1>
-        <a href="#!" v-on="click: playPause()">
-          {{ index }} {{ user.username }} - {{ title }}
-        </a>
-      </h1>
-      <ol>
-        <li v-repeat="tracks">
-          <a href="#!" v-on="click: playPause($index)">
-            {{ user.username }} - {{ title }}
-          </a>
-        </li>
-      </ol>
-    </div>
-
-  </div>
-
-{% endraw %}
 

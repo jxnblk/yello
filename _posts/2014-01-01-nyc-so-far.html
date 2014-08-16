@@ -1,0 +1,30 @@
+---
+title: NYC So Far
+---
+
+<div class="p2">
+
+  <h1>
+    <a href="{{ baseurl }}{{ page.url }}">
+      {{ page.title }}
+    </a>
+  </h1>
+
+  {% raw %}
+
+    <div v-component="soundcloud" v-src="'http://soundcloud.com/jxnblk/sets/nyc-so-far'">
+      <h2>{{ user.username }} - {{ title }}</h2>
+      <ol>
+        <li v-repeat="tracks">
+          <a href="#!" v-on="click: playPause($index)">
+            {{ user.username }} - {{ title }}
+          </a>
+        </li>
+      </ol>
+    </div>
+
+
+  {% endraw %}
+
+</div>
+

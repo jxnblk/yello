@@ -1,4 +1,15 @@
 # baseurl for gh-pages
-# baseurl: '/jekyllvue'
+# baseurl: '/yello'
+baseurl: ''
 exclude: ['node_modules', 'package.json', 'gulpfile.js', 'src']
+
+paginate: 1
+permalink: '/:title'
+
+defaults:
+  -
+    scope:
+      path: ''
+    values:
+      layout: 'application'
 

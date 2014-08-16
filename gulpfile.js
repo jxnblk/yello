@@ -31,6 +31,6 @@ gulp.task('server', function() {
 });
 
 gulp.task('dev', ['compilejs', 'sass', 'jekyll', 'server'], function() {
-  gulp.watch(['./**/*.html', '!./_site/**/*', './src/**/*'], ['compilejs', 'sass', 'jekyll']);
+  gulp.watch(['_config.yml', './**/*.html', '!./_site/**/*', './src/**/*'], ['compilejs', 'sass', 'jekyll']);
 });
 

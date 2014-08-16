@@ -9,12 +9,11 @@ app.data = {};
 
 require('./turbolinks');
 require('./soundcloud');
-//global.player = require('./player');
+require('./icons');
 
 app.data.player = require('./player');
 
 app.bootstrap = function() {
-  console.log('bootstrap');
   app.view = new Vue({
     el: '#view',
     data: app.data

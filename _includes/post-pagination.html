@@ -1,0 +1,15 @@
+
+{% if post.previous %}
+  <a href="{{ baseurl }}{{ post.previous.url }}">Previous post: {{ post.previous.title }}</a>
+{% endif %}
+{% if post.next %}
+  <a href="{{ baseurl }}{{ post.next.url }}">Next post: {{ post.next.title }}</a>
+{% endif %}
+
+{% if page.previous %}
+  <a href="{{ baseurl }}{{ page.previous.url }}">Previous page: {{ page.previous.title }}</a>
+{% endif %}
+{% if page.next %}
+  <a href="{{ baseurl }}{{ page.next.url }}">Next page: {{ page.next.title }}</a>
+{% endif %}
+

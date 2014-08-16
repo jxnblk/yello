@@ -87,6 +87,13 @@ h6, .h6, small {
 .justified {
   text-align: justify; }
 
+svg {
+  max-height: 100%; }
+
+.icon {
+  width: 1em;
+  height: 1em; }
+
 .m0 {
   margin: 0; }
 
