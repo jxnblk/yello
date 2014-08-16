@@ -46,6 +46,8 @@ $light-gray: #eee !default;
 $mid-gray: #777 !default;
 $dark-gray: #333 !default;
 
+$dark-gray: rgba(#000,.75);
+
 $red: #f96010 !default;
 $green: #11e966 !default;
 $yellow: #ffdc00 !default;
@@ -57,7 +59,7 @@ $darken-3: rgba(#000,.375) !default;
 $darken-4: rgba(#000,.75) !default;
 
 // Borders
-$border-color: #ccc !default;
+$border-color: $dark-gray;
 $border-width: 1px !default;
 $border-radius: .25rem !default;
 

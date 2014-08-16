@@ -16,6 +16,7 @@ var Player = function() {
   player.tracks = [];
   player.currentTrack = {};
   player.currentTime = 0;
+  player.duration = 0;
 
   player.play = function(tracks, i) {
     if (i == null) {
@@ -48,6 +49,7 @@ var Player = function() {
   };
 
   player.next = function() {
+    console.log(this);
     if (this.i < this.tracks.length - 1) {
       this.i++;
       this.play(this.tracks, this.i);
@@ -61,11 +63,21 @@ var Player = function() {
     }
   };
 
-  player.seek = function(time) {
+  player.seek = function(e) {
+    if (!audio.seekable) return false;
+    //console.log(e, e.layerX, e.srcElement.offsetWidth, e.layerX / e.srcElement.offsetWidth);
+    var percent = e.layerX / e.srcElement.offsetWidth;
+    var time = percent * audio.duration;
+    audio.currentTime = time;
   };
 
   audio.addEventListener('timeupdate', function() {
     player.currentTime = audio.currentTime;
+    player.duration = audio.duration;
+  });
+
+  audio.addEventListener('ended', function(){
+    player.next();
   });
 
   return player;

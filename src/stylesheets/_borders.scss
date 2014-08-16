@@ -1,9 +1,10 @@
 // Borders
 
 .border {
-  border-style: solid;
-  border-width: $border-width;
-  border-color: $border-color;
+  //border-style: solid;
+  //border-width: $border-width;
+  //border-color: $border-color;
+  box-shadow: inset 0 0 0 $border-width $border-color;
 }
 
 .border-top {

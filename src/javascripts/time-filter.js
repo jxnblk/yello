@@ -6,7 +6,7 @@ Vue.filter('time', function(value) {
       seconds = '0' + Math.floor((value % 60));
 
   minutes = minutes.substr(minutes.length - 2);
-  seconds = seconds.substr(minutes.length - 2);
+  seconds = seconds.substr(seconds.length - 2);
 
   if (!isNaN(seconds)) {
     if (hours) {

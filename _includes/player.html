@@ -27,9 +27,13 @@
       </div>
     </div>
 
-    <div class="container-col-10 bg-darken-1">
-      <p class="bold">{{ player.currentTime | time }}</p>
-      <pre>audio: {{ audio.duration }}</pre>
+    <div class="container-col-10">
+      <div class="progress">
+        <div class="progress-bg border"></div>
+        <div class="progress-value bg-darken-4" v-style="width: 100 * (player.currentTime / player.duration) + '%'"></div>
+        <div class="progress-overlay" v-on="click: player.seek($event)"></div>
+      </div>
+      <p class="bold">{{ player.currentTime | time }} - {{ player.duration | time }}</p>
     </div>
 
   </div>

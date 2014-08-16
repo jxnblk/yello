@@ -13,11 +13,9 @@ require('./icons');
 require('./time-filter');
 
 app.data.player = require('./player');
-//app.data.audio = require('./audio');
 
 app.data.keydown = function(e) {
-  // console.log(e.which);
-  // Handle form fields
+  // console.log(e.which); // Handle form fields
   var player = app.data.player;
   if (e.which == 32) {
     // Spacebar
@@ -46,7 +44,6 @@ app.bootstrap = function() {
 };
 
 document.addEventListener('DOMContentLoaded', app.bootstrap);
-//document.addEventListener('page:load', app.bootstrap);
 document.addEventListener('page:change', app.bootstrap);
 
 
