@@ -1,15 +1,42 @@
+<div class="container-col-10">
 
-{% if post.previous %}
-  <a href="{{ baseurl }}{{ post.previous.url }}">Previous post: {{ post.previous.title }}</a>
-{% endif %}
-{% if post.next %}
-  <a href="{{ baseurl }}{{ post.next.url }}">Next post: {{ post.next.title }}</a>
-{% endif %}
+  <div class="bold py2 mobile-table">
 
-{% if page.previous %}
-  <a href="{{ baseurl }}{{ page.previous.url }}">Previous page: {{ page.previous.title }}</a>
-{% endif %}
-{% if page.next %}
-  <a href="{{ baseurl }}{{ page.next.url }}">Next page: {{ page.next.title }}</a>
-{% endif %}
+    {% if post.previous %}
+      <div class="mobile-table-cell px2">
+        <a href="{{ baseurl }}{{ post.previous.url }}" class="button button-icon">
+          <svg v-icon="'chevronLef'"></svg>
+          Previous: {{ post.previous.title }}
+        </a>
+      </div>
+    {% endif %}
+    {% if post.next %}
+      <div class="mobile-table-cell right-align px2">
+        <a href="{{ baseurl }}{{ post.next.url }}" class="button button-icon">
+          Next: {{ post.next.title }}
+          <svg v-icon="'chevronRight'"></svg>
+        </a>
+      </div>
+    {% endif %}
+
+    {% if page.previous %}
+      <div class="mobile-table-cell px2">
+        <a href="{{ baseurl }}{{ page.previous.url }}" class="button button-icon">
+          <svg v-icon="'chevronLeft'"></svg>
+          Previous: {{ page.previous.title }}
+        </a>
+      </div>
+    {% endif %}
+    {% if page.next %}
+      <div class="mobile-table-cell right-align px2">
+        <a href="{{ baseurl }}{{ page.next.url }}" class="button button-icon">
+          Next: {{ page.next.title }}
+          <svg v-icon="'chevronRight'"></svg>
+        </a>
+      </div>
+    {% endif %}
+
+  </div>
+
+</div>
 

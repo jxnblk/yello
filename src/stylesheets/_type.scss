@@ -4,9 +4,13 @@ body {
   font-family: $font-family;
   line-height: $line-height;
   font-weight: 400;
+  letter-spacing: (1/32)em;
 }
 
-h1, h2, h3, h4, h5, h6 { line-height: $line-height-heading; }
+h1, h2, h3, h4, h5, h6 {
+  line-height: $line-height-heading;
+  font-weight: 600;
+}
 
 // Base Type Scale
 h1, .h1 { font-size: $h1; }
@@ -30,7 +34,7 @@ h6, .h6, small { font-size: $h6; }
 }
 
 // Utilities
-.bold    { font-weight: bold; }
+.bold    { font-weight: 600; }
 .regular { font-weight: normal; }
 .italic  { font-style: italic; }
 .caps    { text-transform: uppercase; letter-spacing: .2em; }
@@ -41,12 +45,4 @@ h6, .h6, small { font-size: $h6; }
 .right-align  { text-align: right; }
 .justified    { text-align: justify; }
 
-svg {
-  max-height: 100%;
-}
-
-.icon {
-  width: 1em;
-  height: 1em;
-}
 

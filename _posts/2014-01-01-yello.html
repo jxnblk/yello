@@ -2,7 +2,7 @@
 title: Yello
 ---
 
-<div class="p2">
+<div class="container-col-10 center p2">
 
   <h1>
     <a href="{{ baseurl }}{{ page.url }}">
@@ -13,18 +13,23 @@ title: Yello
   {% raw %}
 
     <div v-component="soundcloud" v-src="'http://soundcloud.com/jxnblk/sets/nyc-so-far'">
-      <h2>{{ user.username }} - {{ title }}</h2>
-      <ol>
-        <li v-repeat="tracks">
-          <a href="#!" v-on="click: playPause($index)">
-            {{ user.username }} - {{ title }}
-          </a>
-        </li>
-      </ol>
+      <pre>{{ user.username }} - {{ title }}</pre>
+      <div class="bold nav nav-light">
+        <a href="#!"
+          v-repeat="track: tracks"
+          v-on="click: playPause($index)"
+          v-class="active: player.currentTrack == track">
+            {{ track.user.username }} - {{ track.title }}
+        </a>
+      </div>
     </div>
 
 
   {% endraw %}
+
+  <script>
+    document.body.bodyBg = 'bg-yellow';
+  </script>
 
 </div>
 

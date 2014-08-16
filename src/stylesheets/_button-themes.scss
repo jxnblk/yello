@@ -1,32 +1,41 @@
 // Button Themes
 
 .button {
+  background-color: transparent;
   border-radius: $border-radius;
   transition-duration: .2s;
   transition-timing-function: ease;
   transition-property: box-shadow , background-color;
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 2px #fff, 0 0 1px 4px rgba($blue, .5);
+    //box-shadow: 0 0 0 2px #fff, 0 0 1px 4px rgba($blue, .5);
+    box-shadow: 0 0 1px 2px #fff;
   }
 }
 
-.button-blue {
-  color: #fff;
-  background-color: $blue;
+
+.button-icon {
+  svg {
+    fill: $dark-gray;
+  }
   &:hover {
-    color: #fff;
-    background-color: darken($blue, 20%);
+    svg {
+      fill: $darken-4;
+    }
+    background-color: $darken-1;
   }
 }
-
-.button-gray {
+.button-dark {
   color: #fff;
-  background-color: $mid-gray;
+  background-color: $darken-4;
+  svg {
+    fill: #fff;
+  }
   &:hover {
     color: #fff;
-    background-color: darken($mid-gray, 20%);
+    background-color: $darken-3;
   }
   &:focus {}
 }
+
 

@@ -13,6 +13,7 @@ var Player = function() {
   player.i = null;
   player.playing = false;
   player.tracks = [];
+  player.currentTrack = {};
   player.currentTime = 0;
 
   player.play = function(tracks, i) {

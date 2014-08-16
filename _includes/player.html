@@ -1,16 +1,37 @@
+
 {% raw %}
-<div id="global-player" class="p2">
-  <pre>{{ player.playing.user.username }} - {{ player.playing.title }}</pre>
-  <pre>{{ player.currentTime }}</pre>
-  <button v-on="click: player.playPause(player.tracks, player.i)">
-    <svg v-icon="'play'"></svg>
-    <svg v-icon="'pause'"></svg>
-  </button>
-  <button v-on="click: player.previous()">
-    <svg v-icon="'previous'"></svg>
-  </button>
-  <button v-on="click: player.next()">
-    <svg v-icon="'next'"></svg>
-  </button>
-</div>
+
+  <div id="global-player" class="center px2">
+
+    <h1 class="h3 white">{{ player.currentTrack.user.username || '&nbsp;' }}</h1>
+    <h1 class="h2 white">{{ player.currentTrack.title || 'Yello!' }}</h1>
+
+    <div class="container-col-6">
+      <div class="mobile-table mb2">
+        <div class="mobile-table-cell">
+          <button class="h3 button button-icon" v-on="click: player.previous()">
+            <svg v-icon="'previous'"></svg>
+          </button>
+        </div>
+        <div class="mobile-table-cell">
+          <button class="h2 button button-icon" v-on="click: player.playPause(player.tracks, player.i)">
+            <svg v-if="!player.playing" v-icon="'play'"></svg>
+            <svg v-if="player.playing" v-icon="'pause'"></svg>
+          </button>
+        </div>
+        <div class="mobile-table-cell">
+          <button class="h3 button button-icon" v-on="click: player.next()">
+            <svg v-icon="'next'"></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-col-10 bg-light-gray">
+      <pre>{{ player.currentTime }}</pre>
+    </div>
+
+  </div>
+
 {% endraw %}
+

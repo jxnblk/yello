@@ -10,10 +10,14 @@
   appearance: none;
   white-space: nowrap;
   display: inline-block;
-  line-height: $ui-height;
+  //line-height: $ui-height;
+  line-height: 2.25em;
   height: auto;
-  min-height: $ui-height;
-  padding: 0 $ui-padding;
+  //min-height: $ui-height;
+  min-height: 2.25em;
+  //padding: 0 $ui-padding;
+  padding: 0 .75em;
+  vertical-align: middle;
   &:hover,
   &:focus {
     text-decoration: none;

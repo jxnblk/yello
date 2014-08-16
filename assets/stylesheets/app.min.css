@@ -23,12 +23,14 @@ article, aside, details, figcaption, figure, footer, header, main, nav, section,
   display: block; }
 
 body {
-  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  font-family: 'Avenir Next', 'Helvetica Neue', Helvetica, sans-serif;
   line-height: 1.5;
-  font-weight: 400; }
+  font-weight: 400;
+  letter-spacing: 0.03125 em; }
 
 h1, h2, h3, h4, h5, h6 {
-  line-height: 1.25; }
+  line-height: 1.25;
+  font-weight: 600; }
 
 h1, .h1 {
   font-size: 2rem; }
@@ -63,7 +65,7 @@ h6, .h6, small {
     font-size: 0.875rem; } }
 
 .bold {
-  font-weight: bold; }
+  font-weight: 600; }
 
 .regular {
   font-weight: normal; }
@@ -86,13 +88,6 @@ h6, .h6, small {
 
 .justified {
   text-align: justify; }
-
-svg {
-  max-height: 100%; }
-
-.icon {
-  width: 1em;
-  height: 1em; }
 
 .m0 {
   margin: 0; }
@@ -359,6 +354,15 @@ svg {
   padding: 0.1875rem 0.75rem;
   line-height: 1.75rem; }
 
+svg {
+  max-height: 100%; }
+
+.icon {
+  width: 1em;
+  height: 1em;
+  position: relative;
+  top: 0.125em; }
+
 .button {
   font-family: inherit;
   font-weight: bold;
@@ -369,10 +373,11 @@ svg {
   appearance: none;
   white-space: nowrap;
   display: inline-block;
-  line-height: 2.25rem;
+  line-height: 2.25em;
   height: auto;
-  min-height: 2.25rem;
-  padding: 0 0.75rem; }
+  min-height: 2.25em;
+  padding: 0 0.75em;
+  vertical-align: middle; }
   .button:hover, .button:focus {
     text-decoration: none; }
 
@@ -565,10 +570,10 @@ body {
   background-color: #fff; }
 
 a {
-  color: #0096cc;
+  color: #333;
   text-decoration: none; }
   a:hover {
-    color: #007399;
+    color: rgba(0, 0, 0, 0.75);
     text-decoration: underline; }
 
 .white {
@@ -676,27 +681,30 @@ a {
   border-bottom: 1px solid #ccc; }
 
 .button {
+  background-color: transparent;
   border-radius: 0.25rem;
   transition-duration: 0.2s;
   transition-timing-function: ease;
   transition-property: box-shadow, background-color; }
   .button:focus {
     outline: none;
-    box-shadow: 0 0 0 2px #fff, 0 0 1px 4px rgba(0, 150, 204, 0.5); }
+    box-shadow: 0 0 1px 2px #fff; }
 
-.button-blue {
-  color: #fff;
-  background-color: #0096cc; }
-  .button-blue:hover {
-    color: #fff;
-    background-color: #004d66; }
+.button-icon svg {
+  fill: #333; }
+.button-icon:hover {
+  background-color: rgba(0, 0, 0, 0.125); }
+  .button-icon:hover svg {
+    fill: rgba(0, 0, 0, 0.75); }
 
-.button-gray {
+.button-dark {
   color: #fff;
-  background-color: #777; }
-  .button-gray:hover {
+  background-color: rgba(0, 0, 0, 0.75); }
+  .button-dark svg {
+    fill: #fff; }
+  .button-dark:hover {
     color: #fff;
-    background-color: #444444; }
+    background-color: rgba(0, 0, 0, 0.375); }
 
 .nav a:hover, .nav a:focus {
   text-decoration: none; }
@@ -717,59 +725,94 @@ a {
 .nav-light .active {
   background-color: rgba(0, 0, 0, 0.25); }
 
+/*
 .nav-borders {
   border-style: solid;
   border-width: 1px;
-  border-color: #ccc; }
-  .nav-borders > a {
+  border-color: $border-color;
+  & > a {
     border-top-style: solid;
     border-top-width: 1px;
-    border-top-color: #ccc; }
-    .nav-borders > a:first-child {
-      border-top: 0; }
-  .nav-borders .active {
-    color: #333; }
+    border-top-color: $border-color;
+    &:first-child {
+      border-top: 0;
+    }
+  }
+  .active {
+    color: $dark-gray;
+  }
+}
 
-.nav-pills > a {
-  border-radius: 0.25rem; }
-  .nav-pills > a:hover, .nav-pills > a:focus {
-    background-color: rgba(0, 150, 204, 0.125); }
-.nav-pills .active {
-  color: white;
-  background-color: #0096cc; }
-  .nav-pills .active:hover, .nav-pills .active:focus {
-    background-color: #007399; }
-
-.nav-segments {
-  box-shadow: inset 0 0 0 1px #0096cc;
-  border-radius: 0.25rem; }
-  .nav-segments > a {
-    border-right: 1px solid #0096cc;
-    border-bottom: 1px solid #0096cc; }
-    .nav-segments > a:hover, .nav-segments > a:focus {
-      background-color: rgba(0, 150, 204, 0.125); }
-    .nav-segments > a:first-child {
-      border-radius: 0.25rem 0 0 0.25rem; }
-    .nav-segments > a:last-child {
-      border-right: 0;
-      border-radius: 0 0.25rem 0.25rem 0; }
-  .nav-segments .active {
+// Pills
+.nav-pills {
+  & > a {
+    border-radius: $border-radius;
+    &:hover,
+    &:focus {
+      background-color: rgba($blue,.125);
+    }
+  }
+  .active {
     color: white;
-    background-color: #0096cc; }
-    .nav-segments .active:hover, .nav-segments .active:focus {
-      background-color: #007399; }
-  .nav-segments .disabled {
-    color: rgba(51, 51, 51, 0.5); }
-    .nav-segments .disabled:hover, .nav-segments .disabled:focus {
-      color: rgba(51, 51, 51, 0.5);
-      background-color: transparent; }
+    background-color: $blue;
+    &:hover,
+    &:focus {
+      background-color: darken($blue,10%);
+    }
+  }
+}
 
-.nav-tabs > a {
-  border-radius: 0.25rem 0.25rem 0 0;
-  border-bottom: 1px solid #ccc; }
-  .nav-tabs > a:hover {
-    background-color: rgba(0, 0, 0, 0.125); }
-.nav-tabs .active {
-  background-color: white;
-  border: 1px solid #ccc;
-  border-bottom-color: transparent; }
+// Segmented control styles - For horizontal layouts only
+.nav-segments {
+  box-shadow: inset 0 0 0 1px $blue;
+  border-radius: $border-radius;
+  & > a {
+    border-right: 1px solid $blue;
+    border-bottom: 1px solid $blue;
+    &:hover,
+    &:focus {
+      background-color: rgba($blue,.125);
+    }
+    &:first-child {
+      border-radius: $border-radius 0 0 $border-radius;
+    }
+    &:last-child {
+      border-right: 0;
+      border-radius: 0 $border-radius $border-radius 0;
+    }
+  }
+  .active {
+    color: white;
+    background-color: $blue;
+    &:hover,
+    &:focus {
+      background-color: darken($blue,10%);
+    }
+  }
+  .disabled {
+    color: rgba($dark-gray,.5);
+    &:hover,
+    &:focus {
+      color: rgba($dark-gray,.5);
+      background-color: transparent;
+    }
+  }
+}
+
+// Tabs - For horizontal layout only
+.nav-tabs {
+  & > a {
+    border-radius: $border-radius $border-radius 0 0;
+    border-bottom: 1px solid $border-color;
+    &:hover {
+      background-color: $darken-1;
+    }
+  }
+  .active {
+    background-color: white;
+    border: 1px solid $border-color;
+    border-bottom-color: transparent;
+  }
+}
+
+*/
