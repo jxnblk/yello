@@ -1,13 +1,13 @@
 
 {% raw %}
 
-  <div id="global-player" class="center px2 mb4">
+  <div id="global-player" class="center px2 mb2">
 
-    <h1 class="h3 caps">{{ player.currentTrack.user.username || '&nbsp;' }}</h1>
-    <h1 class="h2 serif italic lowercase">{{ player.currentTrack.title || '&nbsp;' }}</h1>
+    <h1 class="h4 caps fade-in" v-transition v-show="player.currentTrack">{{ player.currentTrack.user.username || '&nbsp;' }}</h1>
+    <h1 class="h2 mb1 serif italic xlowercase fade-in" v-transition v-show="player.currentTrack">{{ player.currentTrack.title || '&nbsp;' }}</h1>
 
     <div class="container-col-6">
-      <div class="mobile-table mb2">
+      <div class="mobile-table">
         <div class="mobile-table-cell">
           <button class="h3 button button-circle button-icon" v-on="click: player.previous()">
             <svg v-icon="'previous'"></svg>
@@ -15,8 +15,8 @@
         </div>
         <div class="mobile-table-cell">
           <button class="h2 button button-circle button-icon" v-on="click: player.playPause(player.tracks, player.i)">
-            <svg v-if="!player.playing" v-icon="'play'"></svg>
-            <svg v-if="player.playing" v-icon="'pause'"></svg>
+            <svg v-if="!player.playing" v-icon="'play'" class="popin"></svg>
+            <svg v-if="player.playing" v-icon="'pause'" class="popin"></svg>
           </button>
         </div>
         <div class="mobile-table-cell">

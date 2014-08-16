@@ -13,10 +13,12 @@ title: Yello
   {% raw %}
 
     <div v-component="soundcloud" v-src="'http://soundcloud.com/jxnblk/sets/nyc-so-far'">
-      <div class="h4 bold nav nav-light">
+      <div class="h4 bold nav nav-light" style="min-height:512px">
         <a href="#!"
+          class="fade-in fade-in-repeat"
           v-repeat="track: tracks"
           v-on="click: playPause($index)"
+          v-transition
           v-class="active: player.currentTrack == track">
             {{ track.user.username }} - {{ track.title }}
         </a>

@@ -4,3 +4,34 @@
   transition: all .5s ease-out;
 }
 
+.fade-in {
+  //transition: opacity .2s ease-out;
+  transition-property: opacity;
+  transition-duration: .2s;
+  transition-timing-function: ease-out;
+  &.v-enter,
+  &.v-leave {
+    opacity: 0;
+  }
+}
+
+@for $i from 1 through 16 {
+  .fade-in-repeat:nth-child(#{$i}) {
+    transition-delay: (.025s *$i);
+  }
+}
+
+@-webkit-keyframes popin {
+  from { -webkit-transform: scale(.75); }
+    to { -webkit-transform: scale(1); }
+}
+@keyframes popin {
+  from { transform: scale(.75); }
+    to { transform: scale(1); }
+}
+
+.popin {
+  -webkit-animation: popin .1s ease;
+          animation: popin .1s ease;
+}
+

@@ -16,6 +16,7 @@
 
 
 .button-icon {
+  transition: transform .05s ease-out;
   svg {
     fill: $dark-gray;
   }
@@ -24,6 +25,9 @@
       fill: $darken-4;
     }
     box-shadow: 0 0 0 2px $darken-2;
+  }
+  &:active {
+    transform: scale(.9375);
   }
 }
 

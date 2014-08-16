@@ -754,12 +754,16 @@ a {
     outline: none;
     box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.25); }
 
-.button-icon svg {
-  fill: rgba(0, 0, 0, 0.75); }
-.button-icon:hover {
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.25); }
-  .button-icon:hover svg {
+.button-icon {
+  transition: transform 0.05s ease-out; }
+  .button-icon svg {
     fill: rgba(0, 0, 0, 0.75); }
+  .button-icon:hover {
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.25); }
+    .button-icon:hover svg {
+      fill: rgba(0, 0, 0, 0.75); }
+  .button-icon:active {
+    transform: scale(0.9375); }
 
 .button-dark {
   color: #fff;
@@ -807,3 +811,76 @@ a {
 .transition-background {
   -webkit-transition: all 0.5s ease-out;
   transition: all 0.5s ease-out; }
+
+.fade-in {
+  transition-property: opacity;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out; }
+  .fade-in.v-enter, .fade-in.v-leave {
+    opacity: 0; }
+
+.fade-in-repeat:nth-child(1) {
+  transition-delay: 0.025s; }
+
+.fade-in-repeat:nth-child(2) {
+  transition-delay: 0.05s; }
+
+.fade-in-repeat:nth-child(3) {
+  transition-delay: 0.075s; }
+
+.fade-in-repeat:nth-child(4) {
+  transition-delay: 0.1s; }
+
+.fade-in-repeat:nth-child(5) {
+  transition-delay: 0.125s; }
+
+.fade-in-repeat:nth-child(6) {
+  transition-delay: 0.15s; }
+
+.fade-in-repeat:nth-child(7) {
+  transition-delay: 0.175s; }
+
+.fade-in-repeat:nth-child(8) {
+  transition-delay: 0.2s; }
+
+.fade-in-repeat:nth-child(9) {
+  transition-delay: 0.225s; }
+
+.fade-in-repeat:nth-child(10) {
+  transition-delay: 0.25s; }
+
+.fade-in-repeat:nth-child(11) {
+  transition-delay: 0.275s; }
+
+.fade-in-repeat:nth-child(12) {
+  transition-delay: 0.3s; }
+
+.fade-in-repeat:nth-child(13) {
+  transition-delay: 0.325s; }
+
+.fade-in-repeat:nth-child(14) {
+  transition-delay: 0.35s; }
+
+.fade-in-repeat:nth-child(15) {
+  transition-delay: 0.375s; }
+
+.fade-in-repeat:nth-child(16) {
+  transition-delay: 0.4s; }
+
+@-webkit-keyframes popin {
+  from {
+    -webkit-transform: scale(0.75); }
+
+  to {
+    -webkit-transform: scale(1); } }
+
+@keyframes popin {
+  from {
+    transform: scale(0.75); }
+
+  to {
+    transform: scale(1); } }
+
+.popin {
+  -webkit-animation: popin 0.1s ease;
+  animation: popin 0.1s ease; }
