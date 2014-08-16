@@ -1,10 +1,10 @@
 
 {% raw %}
 
-  <div id="global-player" class="center px2">
+  <div id="global-player" class="center px2 mb4">
 
-    <h1 class="h3 white">{{ player.currentTrack.user.username || '&nbsp;' }}</h1>
-    <h1 class="h2 white">{{ player.currentTrack.title || 'Yello!' }}</h1>
+    <h1 class="h3 caps">{{ player.currentTrack.user.username || '&nbsp;' }}</h1>
+    <h1 class="h2 serif italic lowercase">{{ player.currentTrack.title || 'Yello!' }}</h1>
 
     <div class="container-col-6">
       <div class="mobile-table mb2">
@@ -27,8 +27,9 @@
       </div>
     </div>
 
-    <div class="container-col-10 bg-light-gray">
-      <pre>{{ player.currentTime }}</pre>
+    <div class="container-col-10 bg-darken-1">
+      <p class="bold">{{ player.currentTime | time }}</p>
+      <pre>audio: {{ audio.duration }}</pre>
     </div>
 
   </div>

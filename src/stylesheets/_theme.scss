@@ -5,6 +5,10 @@ body {
   background-color: #fff;
 }
 
+svg {
+  fill: $dark-gray;
+}
+
 a {
   color: $dark-gray;
   text-decoration: none;

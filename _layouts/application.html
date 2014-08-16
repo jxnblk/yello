@@ -1,6 +1,9 @@
 {% include head.html %}
 
-<body id="view" v-class="bodyColor, bodyBg">
+<body id="view"
+  class="transition-background"
+  v-class="bodyColor, bodyBg"
+  v-on="keydown: keydown($event)">
 
   {% include header.html %}
 

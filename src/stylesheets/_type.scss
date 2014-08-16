@@ -7,6 +7,8 @@ body {
   letter-spacing: (1/32)em;
 }
 
+.serif { font-family: 'Merriweather', Georgia, serif; }
+
 h1, h2, h3, h4, h5, h6 {
   line-height: $line-height-heading;
   font-weight: 600;
@@ -37,7 +39,8 @@ h6, .h6, small { font-size: $h6; }
 .bold    { font-weight: 600; }
 .regular { font-weight: normal; }
 .italic  { font-style: italic; }
-.caps    { text-transform: uppercase; letter-spacing: .2em; }
+.caps    { text-transform: uppercase; letter-spacing: .375em; }
+.lowercase { text-transform: lowercase; }
 
 // Alignment
 .left-align   { text-align: left; }

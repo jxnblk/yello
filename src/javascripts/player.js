@@ -10,6 +10,7 @@ var xhr = require('./xhr');
 var Player = function() {
 
   var player = {};
+  //player.audio = audio;
   player.i = null;
   player.playing = false;
   player.tracks = [];

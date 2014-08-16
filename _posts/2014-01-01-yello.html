@@ -13,7 +13,6 @@ title: Yello
   {% raw %}
 
     <div v-component="soundcloud" v-src="'http://soundcloud.com/jxnblk/sets/nyc-so-far'">
-      <pre>{{ user.username }} - {{ title }}</pre>
       <div class="bold nav nav-light">
         <a href="#!"
           v-repeat="track: tracks"
@@ -22,6 +21,7 @@ title: Yello
             {{ track.user.username }} - {{ track.title }}
         </a>
       </div>
+      <pre>{{ user.username }} - {{ title }}</pre>
     </div>
 
 

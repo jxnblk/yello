@@ -9,7 +9,8 @@
   &:focus {
     outline: none;
     //box-shadow: 0 0 0 2px #fff, 0 0 1px 4px rgba($blue, .5);
-    box-shadow: 0 0 1px 2px #fff;
+    //box-shadow: 0 0 1px 2px #fff;
+    box-shadow: 0 0 0 2px $darken-2;
   }
 }
 
@@ -22,9 +23,10 @@
     svg {
       fill: $darken-4;
     }
-    background-color: $darken-1;
+    box-shadow: 0 0 0 2px $darken-2;
   }
 }
+
 .button-dark {
   color: #fff;
   background-color: $darken-4;

@@ -10,8 +10,31 @@ app.data = {};
 require('./turbolinks');
 require('./soundcloud');
 require('./icons');
+require('./time-filter');
 
 app.data.player = require('./player');
+//app.data.audio = require('./audio');
+
+app.data.keydown = function(e) {
+  // console.log(e.which);
+  // Handle form fields
+  var player = app.data.player;
+  if (e.which == 32) {
+    // Spacebar
+    e.preventDefault();
+    player.playPause(player.tracks, player.i);
+  }
+  if (e.which == 74 || e.which == 40) {
+    // J Down
+    e.preventDefault();
+    player.next();
+  }
+  if (e.which == 75 || e.which == 38) {
+    // K Up
+    e.preventDefault();
+    player.previous();
+  }
+};
 
 app.bootstrap = function() {
   console.log('bootstrap');
