@@ -1,7 +1,16 @@
-<header class="p2">
-  <h1 class="h3 inline-block serif lowercase italic center circle square-2 bg-white">
-    <a href="{{ site.baseurl }}" class="yellow">
-      Yello!
-    </a>
-  </h1>
+<header class="table">
+  <div class="table-cell p2">
+    <h1 class="h3 mb0 inline-block serif lowercase italic center circle square-2 bg-white">
+      <a href="{{ site.baseurl }}/" class="yellow">
+        Yello!
+      </a>
+    </h1>
+  </div>
+  <div class="table-cell full-width">
+    {% if page.title != 'Home' %}
+      <div class="mobile-center p2">
+        <a href="{{ site.baseurl }}{{ page.url }}" class="bold caps">{{ page.title }}</a>
+      </div>
+    {% endif %}
+  </div>
 </header>

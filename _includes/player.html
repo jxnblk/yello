@@ -4,23 +4,23 @@
   <div id="global-player" class="center px2 mb4">
 
     <h1 class="h3 caps">{{ player.currentTrack.user.username || '&nbsp;' }}</h1>
-    <h1 class="h2 serif italic lowercase">{{ player.currentTrack.title || 'Yello!' }}</h1>
+    <h1 class="h2 serif italic lowercase">{{ player.currentTrack.title || '&nbsp;' }}</h1>
 
     <div class="container-col-6">
       <div class="mobile-table mb2">
         <div class="mobile-table-cell">
-          <button class="h3 button button-icon" v-on="click: player.previous()">
+          <button class="h3 button button-circle button-icon" v-on="click: player.previous()">
             <svg v-icon="'previous'"></svg>
           </button>
         </div>
         <div class="mobile-table-cell">
-          <button class="h2 button button-icon" v-on="click: player.playPause(player.tracks, player.i)">
+          <button class="h2 button button-circle button-icon" v-on="click: player.playPause(player.tracks, player.i)">
             <svg v-if="!player.playing" v-icon="'play'"></svg>
             <svg v-if="player.playing" v-icon="'pause'"></svg>
           </button>
         </div>
         <div class="mobile-table-cell">
-          <button class="h3 button button-icon" v-on="click: player.next()">
+          <button class="h3 button button-circle button-icon" v-on="click: player.next()">
             <svg v-icon="'next'"></svg>
           </button>
         </div>
@@ -33,7 +33,10 @@
         <div class="progress-value bg-darken-4" v-style="width: 100 * (player.currentTime / player.duration) + '%'"></div>
         <div class="progress-overlay" v-on="click: player.seek($event)"></div>
       </div>
-      <p class="bold">{{ player.currentTime | time }} - {{ player.duration | time }}</p>
+      <div class="clearfix bold h6">
+        <div class="left">{{ player.currentTime | time }}</div>
+        <div class="right">{{ player.duration | time }}</div>
+      </div>
     </div>
 
   </div>

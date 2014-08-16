@@ -34,6 +34,7 @@ var Soundcloud = Vue.extend({
         if (player.tracks.length > 0) return false;
         player.tracks = track.tracks || new Array(track);
         player.i = 0;
+        player.currentTrack = player.tracks[player.i];
       };
       var elements = document.querySelectorAll('[v-src]');
       for (var i = 0; i < elements.length; i++) {

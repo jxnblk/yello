@@ -1,11 +1,11 @@
-{% if paginator.total_pages > 1 %}
+<div class="container-col-10">
 
-  <div class="container-col-10">
+  <div class="bold mobile-table">
 
-    <div class="bold py4 mobile-table">
+    {% if paginator.total_pages > 1 %}
 
       {% if post.previous %}
-        <div class="mobile-table-cell px2">
+        <div class="mobile-table-cell px2 py4">
           <a href="{{ site.baseurl }}{{ post.previous.url }}" class="button button-icon">
             <svg v-icon="'chevronLeft'"></svg>
             Previous: {{ post.previous.title }}
@@ -13,7 +13,7 @@
         </div>
       {% endif %}
       {% if post.next %}
-        <div class="mobile-table-cell right-align px2">
+        <div class="mobile-table-cell right-align px2 py4">
           <a href="{{ site.baseurl }}{{ post.next.url }}" class="button button-icon">
             Next: {{ post.next.title }}
             <svg v-icon="'chevronRight'"></svg>
@@ -21,35 +21,27 @@
         </div>
       {% endif %}
 
-    </div>
+    {% endif %}
+
+    {% if page.previous %}
+      <div class="mobile-table-cell px2 py4">
+        <a href="{{ site.baseurl }}{{ page.previous.url }}" class="button button-icon">
+          <svg v-icon="'chevronLeft'"></svg>
+          Previous: {{ page.previous.title }}
+        </a>
+      </div>
+    {% endif %}
+    {% if page.next %}
+      <div class="mobile-table-cell right-align px2 py4">
+        <a href="{{ site.baseurl }}{{ page.next.url }}" class="button button-icon">
+          Next: {{ page.next.title }}
+          <svg v-icon="'chevronRight'"></svg>
+        </a>
+      </div>
+    {% endif %}
 
   </div>
 
-{% endif %}
-
-  <div class="container-col-10">
-
-    <div class="bold py4 mobile-table">
-
-      {% if page.previous %}
-        <div class="mobile-table-cell px2">
-          <a href="{{ site.baseurl }}{{ page.previous.url }}" class="button button-icon">
-            <svg v-icon="'chevronLeft'"></svg>
-            Previous: {{ page.previous.title }}
-          </a>
-        </div>
-      {% endif %}
-      {% if page.next %}
-        <div class="mobile-table-cell right-align px2">
-          <a href="{{ site.baseurl }}{{ page.next.url }}" class="button button-icon">
-            Next: {{ page.next.title }}
-            <svg v-icon="'chevronRight'"></svg>
-          </a>
-        </div>
-      {% endif %}
-
-    </div>
-
-  </div>
+</div>
 
 

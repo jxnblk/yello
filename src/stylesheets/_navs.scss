@@ -2,12 +2,14 @@
 
 // Sets line height, display block, padding, and white-space nowrap
 .nav {
-  line-height: $ui-height;
+  line-height: $ui-height - $ui-padding;
   & > a,
   .nav-item {
     display: block;
     line-height: inherit;
-    white-space: nowrap;
+    padding-top: $ui-padding/2;
+    padding-bottom: $ui-padding/2;
+    //white-space: nowrap;
   }
   & > a {
     padding-right: $ui-padding;

@@ -23,6 +23,7 @@ gulp.task('sass', function() {
 });
 
 gulp.task('jekyll', function() {
+  //require('child_process').spawn('jekyll', ['build --config _config-dev.yml']);
   require('child_process').spawn('jekyll', ['build']);
 });
 

@@ -7,7 +7,10 @@ body {
   letter-spacing: (1/32)em;
 }
 
-.serif { font-family: 'Merriweather', Georgia, serif; }
+.serif {
+  font-family: 'Merriweather', Georgia, serif;
+  font-weight: 900;
+}
 
 h1, h2, h3, h4, h5, h6 {
   line-height: $line-height-heading;
