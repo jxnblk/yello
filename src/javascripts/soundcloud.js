@@ -2,7 +2,8 @@
 'use strict';
 
 var player = require('./player');
-var xhr = require('./xhr');
+//var xhr = require('./xhr');
+var jsonp = require('./jsonp');
 
 var Soundcloud = Vue.extend({
   data: {
@@ -49,13 +50,23 @@ var Soundcloud = Vue.extend({
         }
         preloadPlayer(app.data[value]);
       } else {
-        xhr.get(apiUrl, function(response) {
+        callback = function(response) {
           app.data[value] = response;
           for (var key in response) {
             self.vm.$data[key] = response[key];
           }
           preloadPlayer(app.data[value]);
-        });
+        };
+        jsonp.get(apiUrl, callback);
+
+        // XHR does not work with Soundcloud resolve redirect
+        //xhr.get(apiUrl, function(response) {
+        //  app.data[value] = response;
+        //  for (var key in response) {
+        //    self.vm.$data[key] = response[key];
+        //  }
+        //  preloadPlayer(app.data[value]);
+        //});
       }
     }
   }

@@ -1,6 +1,6 @@
 {
-  "name": "jekyllvue",
-  "version": "0.0.0",
+  "name": "yello",
+  "version": "0.0.1",
   "description": "",
   "main": "gulpfile.js",
   "dependencies": {},
@@ -19,12 +19,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jxnblk/jekyllvue.git"
+    "url": "https://github.com/jxnblk/yello.git"
   },
-  "author": "",
+  "author": "Jxnblk",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jxnblk/jekyllvue/issues"
+    "url": "https://github.com/jxnblk/yello/issues"
   },
-  "homepage": "https://github.com/jxnblk/jekyllvue"
+  "homepage": "https://github.com/jxnblk/yello"
 }

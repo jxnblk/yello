@@ -14,6 +14,9 @@ require('./time-filter');
 
 app.data.player = require('./player');
 
+var jsonp = require('./jsonp');
+global.callback = jsonp.callback;
+
 app.data.keydown = function(e) {
   // console.log(e.which); // Handle form fields
   var player = app.data.player;
