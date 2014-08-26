@@ -10,7 +10,7 @@ var watch = require('gulp-watch');
 gulp.task('compilejs', function() {
   gulp.src('./src/javascripts/app.js')
     .pipe(browserify())
-    .pipe(uglify())
+    //.pipe(uglify())
     .pipe(rename('app.min.js'))
     .pipe(gulp.dest('./assets/javascripts'));
 });

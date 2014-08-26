@@ -1,0 +1,23 @@
+---
+layout: application
+title: Vuejs Test
+---
+
+<div class="p2">
+
+  {% raw %}
+
+    <div v-component="soundcloud" v-src="'http://soundcloud.com/jxnblk/let-go'">
+      <h2><a href v-on="click: playPause(index)">{{ index }} - {{ user.username }} - {{ title }}</a></h2>
+    </div>
+
+    <div v-component="soundcloud" v-src="'http://soundcloud.com/jxnblk/really-wanna'">
+      <h2><a href v-on="click: playPause(index)">{{ index }} - {{ user.username }} - {{ title }}</a></h2>
+    </div>
+
+  {% endraw %}
+
+  <script> document.body.bodyBg = 'bg-light-gray'; </script>
+
+</div>
+
